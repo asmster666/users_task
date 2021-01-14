@@ -7,7 +7,7 @@
     $page = 'home';
     include('./includes/list_of_users.php');
 ?>
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html>
         <head>
             <title>DB test task</title>
@@ -15,10 +15,10 @@
         </head>
         <body>
             <header>
-                    Show users
+                    Show users:
                     <ul>
-                        <li class="<?php if($page=='users'){echo 'active';} ?>"><a href="list_of_users.php">Users</a></li> 
-                        <li class="<?php if($page=='home'){echo 'active';} ?>"><a href="/">Home</a></li>
+                        <li class="<?php if($page=='users'){echo 'active';} ?>"><a href="/php-test-task/list_of_users.php">Users</a></li> 
+                        <li class="<?php if($page=='home'){echo 'active';} ?>"><a href="/php-test-task/">Home</a></li>
                     </ul>
             </header>  
 

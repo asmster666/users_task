@@ -1,11 +1,11 @@
 <?php
-    include_once 'connect.php';
+    include 'connect.php';
 
     $page = 'users';
     $user_data = json_decode(file_get_contents('webhook.json'), true);
 ?>
 
-<table class="table">
+<table class="table"> 
     <thead>
         <tr>
             <th>ID</th>
@@ -36,10 +36,8 @@
                     <td><?php echo $var6=$data['data']['img_name'] ?></td>
                     <td><?php echo $var7=$data['update'] ?></td>
                     <td> 
-                        <form method="post">
-                            <input type="submit" name="edit" value="edit"/> 
-                            <input type="submit" name="delete" value="delete"/> 
-                        </form>
+                        <a href="edit.php?id=<?php echo $data['hash']; ?>">Edit</a>
+                        <a href="<?php $value = $data['hash'];?>">Delete</a>
                     </td>
                 </tr>
 
@@ -57,7 +55,7 @@
                     if($query = $connect->query($query)) {
                         $count = $query->num_rows;
 
-                        printf("Result set has %d rows.\n", $count);
+                        //printf("Result set has %d rows.\n", $count);
 
                         $query->close(); 
                     }
@@ -70,12 +68,9 @@
                         $connect->query("INSERT INTO profiles (user_id, user_name, user_family, user_key, user_url, user_img_name, user_update) VALUES ('$hash', '$var2', '$var3', '$var4', '$var5', '$var6', '$var7')") or die ("no creating...");
                     }
 
-                    if(isset($_POST['edit'])) { 
+                    if(isset($_GET['edit'])) { 
                         echo "This is edit that is selected"; 
-                    } 
-                    if(isset($_POST['delete'])) { 
-                        echo "This is delete that is selected"; 
-                    } 
+                    }  
 
                     $connect->close();
                 ?> 
