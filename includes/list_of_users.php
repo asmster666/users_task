@@ -15,6 +15,7 @@
             <th>url</th>
             <th>img_name</th>
             <th>update</th>
+            <th>settings</th>
         </tr>
     </thead>
     <tbody>
@@ -34,6 +35,12 @@
                     <td><?php echo $var5=$data['data']['url'] ?></td>
                     <td><?php echo $var6=$data['data']['img_name'] ?></td>
                     <td><?php echo $var7=$data['update'] ?></td>
+                    <td> 
+                        <form method="post">
+                            <input type="submit" name="edit" value="edit"/> 
+                            <input type="submit" name="delete" value="delete"/> 
+                        </form>
+                    </td>
                 </tr>
 
                 <?php
@@ -62,6 +69,13 @@
                     } else {
                         $connect->query("INSERT INTO profiles (user_id, user_name, user_family, user_key, user_url, user_img_name, user_update) VALUES ('$hash', '$var2', '$var3', '$var4', '$var5', '$var6', '$var7')") or die ("no creating...");
                     }
+
+                    if(isset($_POST['edit'])) { 
+                        echo "This is edit that is selected"; 
+                    } 
+                    if(isset($_POST['delete'])) { 
+                        echo "This is delete that is selected"; 
+                    } 
 
                     $connect->close();
                 ?> 
